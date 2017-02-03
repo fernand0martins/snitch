@@ -24,9 +24,9 @@ def main():
     service_names_array = config.get("snitch", "service_names").split(',')
 
     for service in service_names_array:
-        bashCommand = "/bin/systemctl status " + service + " | grep -c \"Active: active\""
+        bash_command = "/bin/systemctl status " + service + " | grep -c \"Active: active\""
 
-        result = subprocess.check_output(bashCommand, shell=True)
+        result = subprocess.check_output(bash_command, shell=True)
 
         if result == 0:
             print (date() + ": Snitch failed.")
