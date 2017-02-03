@@ -2,11 +2,13 @@ import ConfigParser
 import os
 import subprocess
 import requests
+import time
 
 script_dir = os.path.dirname(__file__)
 config_file = os.path.join(script_dir, "config/config.cnf")
 
 if not os.path.isfile(config_file):
+    print(time.strftime("%I:%M:%S") + ": Snitch config failed to load.")
     raise Exception("Config file missing")
 
 config = ConfigParser.ConfigParser()
@@ -21,6 +23,8 @@ for service in service_names_array:
     result = subprocess.check_output(bashCommand, shell=True)
 
     if result == 0:
+         print(time.strftime("%I:%M:%S") + ": Snitch failed.")
          raise Exception("Service" + service + " is not running")
 
 requests.get(url)
+print(time.strftime("%I:%M:%S") + ": Snitch done.")
