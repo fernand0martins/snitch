@@ -6,7 +6,7 @@ import time
 
 
 def date():
-    return time.strftime("%I:%M:%S")
+    return time.strftime("%Y-%m-%d %I:%M:%S")
 
 
 def main():
