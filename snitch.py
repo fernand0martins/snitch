@@ -3,7 +3,8 @@ import os
 import subprocess
 import requests
 
-config_file = "config/config.cnf"
+script_dir = os.path.dirname(__file__)
+config_file = os.path.join(script_dir, "config/config.cnf")
 
 if not os.path.isfile(config_file):
     raise Exception("Config file missing")
